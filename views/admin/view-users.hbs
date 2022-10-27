@@ -1,0 +1,143 @@
+<style>
+  .content {
+    padding: 10px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border-collapse: collapse;
+    border: 1px solid #000000;
+    padding: 10px;
+  }
+
+  th {
+    background: #e143b0;
+    color: #4d0707;
+  }
+
+  td {
+    background: black;
+    color: #000000;
+  }
+
+  @media (max-width: 780px) {
+    thead {
+      display: none;
+    }
+
+    .table,
+    tbody,
+    tr,
+    td {
+      display: block;
+      width: 100%;
+    }
+
+    tr {
+      margin-bottom: 20px;
+    }
+
+    td::before {
+      content: attr(data-label);
+      color: #4d0707;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 0;
+      padding-left: 30%;
+      position: relative;
+      background: #e143b0;
+      color: #ffffff;
+    }
+
+    td span {
+      display: block;
+      width: 100%;
+      
+      background: #ffffff;
+      color: #000000;
+    }
+
+  }
+</style>
+
+
+
+<div style="background-color: #d2c9ff;" class="content mt-4">
+  <table style="background-color: white;" class="table">
+    <thead style="background-color: blue;">
+      <tr>
+        <th style="color: white;">No</th>
+        <th style="color: white;">User Name</th>
+        <th style="color: white;">Email Id</th>
+        <th style="color: white;">Mobile</th>
+        <th style="color: white;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each allUserDetails}}
+      <tr>
+        <td data-label="No"><span >1</span></td>
+        <td data-label="User Name" ><span>{{this.username}}</span></td>
+        <td data-label="Email Id"><span>{{this.email}}</span></td>
+        <td data-label="Mobile"><span>{{this.phonenumber}}</span></td>
+        <td data-label="Status"><span>
+            {{#if this.blocked}}
+
+
+            <a data-bs-toggle="modal" data-bs-target="#{{this.name}}Model" class="btn btn-info ">Unblock</a>
+
+
+            <div class="modal fade" id="{{this.name}}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-info" id="exampleModalLabel">Are you sure to Unblock
+                      {{this.username}} ?</h5>
+
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/admin/Unblock/{{this._id}}" type="button" class="btn btn-info">Unblock</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {{else}}
+            <a data-bs-toggle="modal" data-bs-target="#ModelBlock{{this._id}}" class="btn btn-danger ">Block</a>
+
+
+
+            <div class="modal fade" id="ModelBlock{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel">Are you sure to Block {{this.username}} ?
+                    </h5>
+
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <a href="/admin/block/{{this._id}}" type="button" class="btn btn-danger">Block</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+          </span></td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

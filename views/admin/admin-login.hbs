@@ -1,0 +1,52 @@
+<style>
+    .error {
+        color: red;
+        margin-bottom: 0;
+    }
+
+    .valid {
+        color: green;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6 m-auto">
+        <div class="container mt-5 pl-5">
+            <center><img src="/img/suii logo.png" alt=""></center>
+            <h2 class="text-center">Admin Login</h2>
+            <form action="/admin/login" method="POST" id="adminLogin-form">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Enter User ID" required>
+                </div>
+                <div class="form-group mt-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+                </div>
+
+                {{#if loginErr}}
+                <p class="error" style="color:red">{{loginErr}}</p>
+                {{/if}}
+
+                <button type="submit" class="btn btn-primary float-right mt-5">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#adminLogin-form").validate({
+            rules: {
+                username: {
+                    required: true,
+                },
+                password: {
+                    required: true,
+                }
+            }
+        });
+    })
+</script>

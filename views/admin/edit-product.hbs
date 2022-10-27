@@ -1,0 +1,199 @@
+<style>
+    .error {
+        color: red;
+        margin-bottom: 0;
+    }
+
+    .valid {
+        color: green;
+    }
+
+    .card {
+        background: #f6f6f6;
+        border-radius: 2px;
+        display: inline-block;
+        height: 200px;
+        margin: 1rem;
+        position: relative;
+        width: 300px;
+    }
+
+    .card-5 {
+        box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+    }
+</style>
+<section style="background-color: #d2c9ff;">
+    <div class="container mt-4">
+        <div class="row d-flex">
+            <h2 class="text-center">Edit Product</h2>
+            <div class="col-md-6">
+                <form name="myForm" id="edit-form" action="/admin/edit-product/{{product._id}}" method="post"
+                    enctype="multipart/form-data" onsubmit="return validation()">
+                    <div>
+                        <label for="">Product Name</label>
+                        <input type="text" name="name" class="form-control" value="{{product.name}}">
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="">Brand Name</label>
+                        <input type="text" name="brandname" class="form-control" value="{{product.brandname}}">
+                    </div>
+
+
+                    <div class="category mt-4">
+                        <label for="category">Category</label>
+                        <select name="category" class="form-select" aria-label="Default select example">
+                            <option selected>{{product.category}}</option>
+                            {{#each mainCate}}
+                            <option value="{{this.maincategory}}">{{this.maincategory}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="subcategory mt-4">
+                        <label for="subcategory">Sub Category</label>
+                        <select name="subcategory" class="form-select" aria-label="Default select example">
+                            <option selected>{{product.subcategory}}</option>
+                            {{#each subCate}}
+                            <option value="{{this.subcategory}}">{{this.subcategory}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <label class="mt-4" for="">Stock</label>
+                    <input value="{{product.stock}}" type="text" name="stock" class="form-control">
+
+
+                    <label class="mt-4" for="">Price</label>
+                    <input type="text" name="price" class="form-control" value="{{product.price}}">
+
+                    <label class="mt-4" for="">Description</label>
+                    <input type="text" name="description" class="form-control" value="{{product.description}}">
+
+
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-between mt-4">
+
+                    <div class="card card-5 d-flex justify-content-center">
+                        <label style="text-align: center;" class="mt-4" for="">Image1</label><br>
+                        <center><img class="mb-2" src="/product-images/{{product._id}}.jpg" alt="" style="width: 100%; height: auto;"
+                            id="imgView1"></center>
+                    </div>
+
+                    <div class="card card-5 d-flex justify-content-center">
+                        <label style="text-align: center;" class="mt-4" for="">Image2</label><br>
+                        <center><img src="/product-images2/{{product._id}}.jpg" alt="" style="width: 100%; height: auto;"
+                            id="imgView2"></center>
+                    </div>
+
+                    <div class="card card-5 d-flex justify-content-center">
+                        <label style="text-align: center;" class="mt-4" for="">Image3</label><br>
+                        <center><img src="/product-images3/{{product._id}}.jpg" alt="" style="width: 100%; height: auto;"
+                            id="imgView3"></center>
+                    </div>
+
+                    <div class="card card-5 d-flex justify-content-center">
+                        <label style="text-align: center;" class="mt-4" for="">Image4</label><br>
+                        <center><img src="/product-images4/{{product._id}}.jpg" alt="" style="width: 100%; height: auto;"
+                            id="imgView4"></center>
+                    </div>
+
+
+
+
+                </div>
+                <br>
+                <input onchange="viewImage1(event)" type="file" name="image1" class="form-control"><br>
+                <input onchange="viewImage2(event)" type="file" name="image2" class="form-control" {{pro}}><br>
+                <input onchange="viewImage3(event)" type="file" name="image3" class="form-control" {{pro}}><br>
+                <input onchange="viewImage4(event)" type="file" name="image4" class="form-control" {{pro}}><br>
+                <p id="imgErr" class="text-danger"></p>
+            </div>
+           <center><button type="submit" class="btn btn-primary mt-4 w-25 mb-5">Submit</button></center>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{{!-- edit-form --}}
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+{{!-- edit-form --}}
+
+
+<script>
+
+    let img = document.forms["myForm"]["image1"];
+    function validation() {
+        console.log("Image validation working")
+        if (img.value != "") {
+            //sxsjbk
+        } else {
+            document.getElementById("imgErr").innerHTML = "Please upload an image."
+            return false
+        }
+    }
+
+
+    $(document).ready(function () {
+        $("#edit-form").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5
+                },
+                brandname: {
+                    required: true,
+                    minlength: 4
+                },
+                category: {
+                    required: true
+                },
+                subcategory: {
+                    required: true
+                },
+                stock: {
+                    required: true
+                },
+                price: {
+                    required: true
+                },
+                description: {
+                    required: true
+                },
+                image1: {
+                    required: true
+                },
+                image2: {
+                    required: true
+                },
+                image3: {
+                    required: true
+                },
+                image4: {
+                    required: true
+                }
+            }
+        });
+    })
+
+
+    function viewImage1(event) {
+        document.getElementById('imgView1').src = URL.createObjectURL(event.target.files[0])
+    }
+
+    function viewImage2(event) {
+        document.getElementById('imgView2').src = URL.createObjectURL(event.target.files[0])
+    }
+
+    function viewImage3(event) {
+        document.getElementById('imgView3').src = URL.createObjectURL(event.target.files[0])
+    }
+
+    function viewImage4(event) {
+        document.getElementById('imgView4').src = URL.createObjectURL(event.target.files[0])
+    }
+</script>

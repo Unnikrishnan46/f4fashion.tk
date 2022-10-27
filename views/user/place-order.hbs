@@ -1,0 +1,607 @@
+<style>
+  body {
+    background-color: #d2c9ff;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #262626;
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+
+  .d-flex {
+    display: flex;
+    flex-direction: row;
+    background: #f6f6f6;
+    border-radius: 0 0 5px 5px;
+    padding: 25px;
+  }
+
+  form {
+    flex: 4;
+  }
+
+  .Yorder {
+    flex: 2;
+  }
+
+  .title {
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #d2c9ff), color-stop(100, #d2c9ff));
+    background: -moz-linear-gradient(top left, #d2c9ff 0%, #d2c9ff 100%);
+    background: -ms-linear-gradient(top left, #d2c9ff 0%, #d2c9ff 100%);
+    background: -o-linear-gradient(top left, #d2c9ff 0%, #d2c9ff 100%);
+    background: linear-gradient(to bottom right, #d2c9ff 0%, #d2c9ff 100%);
+    border-radius: 5px 5px 0 0;
+    padding: 20px;
+    color: #f6f6f6;
+  }
+
+  h2 {
+    margin: 0;
+    padding-left: 15px;
+  }
+
+  .required {
+    color: red;
+  }
+
+  label,
+  table {
+    display: block;
+    margin: 15px;
+  }
+
+  label>span {
+    float: left;
+    width: 25%;
+    margin-top: 12px;
+    padding-right: 10px;
+  }
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  select {
+    width: 70%;
+    height: 30px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+    color: #888;
+  }
+
+  select {
+    width: 72%;
+    height: 45px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
+
+  .Yorder {
+    margin-top: 15px;
+    height: 600px;
+    padding: 20px;
+    border: 1px solid #dadada;
+  }
+
+  table {
+    margin: 0;
+    padding: 0;
+  }
+
+  th {
+    border-bottom: 1px solid #dadada;
+    padding: 10px 0;
+  }
+
+  tr>td:nth-child(1) {
+    text-align: left;
+    color: #2d2d2a;
+  }
+
+  tr>td:nth-child(2) {
+    text-align: right;
+    color: #52ad9c;
+  }
+
+  td {
+    border-bottom: 1px solid #dadada;
+    padding: 25px 25px 25px 0;
+  }
+
+  p {
+    display: block;
+    color: #888;
+    margin: 0;
+    padding-left: 25px;
+  }
+
+  .Yorder>div {
+    padding: 15px 0;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    background: #52ad9c;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  button:hover {
+    cursor: pointer;
+    background: #428a7d;
+  }
+
+
+
+  
+.footer {
+  background-color: #282c34;
+  width: 100%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 50px;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+  width: 33%;
+  padding-right: 15px;
+}
+
+.footer .about {
+  line-height: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer .icons {
+  margin-top: 25px;
+}
+
+.footer .icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+
+/* footer center*/
+
+.footer .footer-center {
+  width: 30%;
+}
+
+.footer .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer .footer-center p a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+
+/* footer right*/
+
+.footer .footer-right {
+  width: 35%;
+}
+
+.footer h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer h2 span {
+  color: #0099ff;
+}
+
+.footer .menu {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .menu a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .menu a:hover {
+  color: #0099ff;
+}
+
+.footer .name {
+  color: #0099ff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+  }
+  .footer .footer-left,
+  .footer .footer-center,
+  .footer .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .footer .footer-center i {
+    margin-left: 0;
+  }
+}
+
+</style>
+
+<section>
+  <div class="container">
+    <div class="title">
+      <h2>Product Order Form</h2>
+    </div>
+    <div class="d-flex mb-4">
+      <form id="checkout-form" action="" method="">
+        <label>
+          <span class="fname">Name <span class="required">*</span></span>
+          <input type="text" name="name" value="{{user.username}}">
+        </label>
+
+
+        <input type="text" name="userId" id="" value="{{user._id}}" hidden>
+
+        <label>
+          <span>Address <span class="required">*</span></span>
+          {{#if addDefault1}}
+          <input type="text" name="address" value="{{address.address1.address}}" required>
+          {{else if addDefault2}}
+          <input type="text" name="address" value="{{address.address2.address}}" required>
+          {{else}}
+          <input type="text" name="address" value="" required>
+          {{/if}}
+        </label>
+
+        <label>
+          <span>City <span class="required">*</span></span>
+          {{#if addDefault1}}
+          <input type="text" name="city" value="{{address.address1.district}}">
+          {{else if addDefault2}}
+          <input type="text" name="city" value="{{address.address2.district}}">
+          {{else}}
+          <input type="text" name="address" value="" required>
+          {{/if}}
+        </label>
+        <label>
+          <span>State <span class="required">*</span></span>
+          {{#if addDefault1}}
+          <input type="text" name="state" value="{{address.address1.state}}">
+          {{else if addDefault2}}
+          <input type="text" name="state" value="{{address.address2.state}}">
+          {{else}}
+          <input type="text" name="state" value="">
+          {{/if}}
+        </label>
+        <label>
+          <span>Pincode<span class="required">*</span></span>
+          {{#if addDefault1}}
+          <input type="text" name="pincode" value="{{address.address1.pincode}}">
+          {{else if addDefault2}}
+          <input type="text" name="pincode" value="{{address.address2.pincode}}">
+          {{else}}
+          <input type="text" name="pincode" value="">
+          {{/if}}
+        </label>
+        <label>
+          <span>Phone Number<span class="required">*</span></span>
+          <input type="tel" name="phonenumber" value="{{user.phonenumber}}">
+        </label>
+        <label>
+          <span>Email Address <span class="required">*</span></span>
+          <input type="email" name="email" value="{{user.email}}">
+        </label>
+
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-secondary btn-sm" href="/add-address">Add or Change Address</a>
+        </div>
+
+        <div class="Yorder mb-4">
+          <table>
+            <tr>
+              <th colspan="2">Your order</th>
+            </tr>
+            <tr>
+              <td>Subtotal</td>
+              <td>Rs. <span id="total">{{total}}</span></td>
+            </tr>
+            <tr>
+              <td>Shipping</td>
+              <td>Free shipping</td>
+            </tr>
+          </table><br>
+
+          {{!-- coupen --}}
+
+          <label for="coupen">Coupen Code</label>
+          <input type="text" name="code" id="code">
+          <button onclick="checkOut()" class="btn btn-warning" type="button">Redeem Coupen</button>
+          <p style="color: red;display:none" id="notfound">Not found</p>
+          {{!-- coupen --}}
+
+          <div>
+            <input type="radio" name="paymentmethod" value="cod"> Cash on Delivery
+          </div>
+          <div>
+            <input type="radio" name="paymentmethod" value="razorpay"> Razorpay <span>
+              <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt=""
+                width="50">
+            </span>
+          </div>
+
+          <div>
+            <input type="radio" name="paymentmethod" value="paypal"> Paypal <span>
+              <img src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg" alt=""
+                width="50">
+            </span>
+          </div>
+          <button class="mb-4" type="submit">Place Order</button>
+        </div><!-- Yorder -->
+      </form>
+    </div>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div style="background-color: transparent;" class="footer-left col-md-4 col-sm-6">
+    <p class="about">
+      <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+      ultricies feugiat leo. Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante sed, viverra massa.
+    </p>
+    <div class="icons">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-google"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-center col-md-4 col-sm-6">
+    <div>
+      <i class="bi bi-geo-alt-fill"></i>
+      <p><span> F4FASHION Tagore Nagar</span> Vazhuthacadu, Trivandrum</p>
+    </div>
+    <div>
+      <i class="bi bi-telephone-fill"></i>
+      <p> (+91) 7356 373 621</p>
+    </div>
+    <div>
+      <i class="bi bi-envelope-fill"></i>
+      <p><a href="#"> f4fashion@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right col-md-4 col-sm-6">
+    <h2> Company<span> logo</span></h2>
+    <p class="menu">
+      <a href="#"> Home</a> |
+      <a href="#"> About</a> |
+      <a href="#"> Services</a> |
+      <a href="#"> Portfolio</a> |
+      <a href="#"> News</a> |
+      <a href="#"> Contact</a>
+    </p>
+    <p class="name"> Company Name &copy; 2016</p>
+  </div>
+</footer>
+
+
+<script>
+  $('#checkout-form').submit((e) => {
+    console.log('ajax calling')
+    e.preventDefault()
+    $.ajax({
+      url: '/place-order',
+      method: 'post',
+      data: $('#checkout-form').serialize(),
+      success: (response) => {
+        alert(response)
+        console.log(response)
+        console.log('bosudukki')
+
+        if (response.codSuccess) {
+          location.href = '/order-success'
+        } else if(response.razorSuccess){
+          console.log('razorpay coming')
+          razorpayPayment(response.order)  
+        }else{
+          console.log("paypal ajax working")
+          console.log(response.totalPrice)
+          paypalPayment(response.totalPrice,response.orderId)
+        }
+      }
+    })
+  })
+
+  function razorpayPayment(order) {
+    console.log('jkbkdh')
+    console.log(order.id)
+    var options = {
+      "key": "rzp_test_vOWB4Hpqe9fSat", // Enter the Key ID generated from the Dashboard
+      "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      "currency": "INR",
+      "name": "F4FASHION",
+      "description": "Test Transaction",
+      "image": "",
+      "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+      "handler": function (response) {
+
+        verifyPayment(response, order)
+      },
+      "prefill": {
+        "name": "F4FASHION",
+        "email": "unni@gmail.com",
+        "contact": "7356373621"
+      },
+      "notes": {
+        "address": "F4FASHION kollam"
+      },
+      "theme": {
+        "color": "#3399cc"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+  }
+  function verifyPayment(payment, order) {
+    console.log("verify payment working goood")
+    $.ajax({
+      url: '/verify-payment',
+      data: {
+        payment,
+        order
+      },
+      method: 'post',
+      success: (response) => {
+        console.log("razor not working")
+        console.log(response)
+        if (response.status) {
+          location.href = '/order-success'
+        } else {
+          alert('payment failed')
+        }
+      }
+    })
+  }
+
+  function paypalPayment(totalPrice, orderId) {
+    console.log("calling the paypal")
+    console.log(totalPrice,orderId)
+    $.ajax({
+      url: '/paypal-payment',
+      data: {
+        totalPrice,
+        orderId,
+      },
+      method: 'post',
+      success: (response) => {
+        console.log(response)
+        location.href=response.forwardLink
+        if(response.status){
+          console.log("we won")
+        }else{
+          alert('paypal payment failed')
+        }
+        
+      }
+    })
+  }
+
+function checkOut(){
+  let total=document.querySelector('#total')
+  console.log('coupen working')
+  console.log(total)
+  let code=document.getElementById('code').value
+  $.ajax({
+    url:'/check-coupen',
+    data:{
+      code
+    },
+    method:'post',
+    success:(response)=>{
+      if(response.value){
+        console.log('response value here')
+        console.log(response.value)
+        let discount=parseInt(total.innerHTML)-response.value
+        console.log(discount)
+        total.innerHTML=discount
+      }else{
+        document.getElementById('notfound').style.display='initial'
+      }
+    }
+  })
+}
+
+
+</script>

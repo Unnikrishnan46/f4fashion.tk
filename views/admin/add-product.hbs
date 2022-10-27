@@ -1,0 +1,202 @@
+<style>
+    .error {
+        color: red;
+        margin-bottom: 0;
+    }
+
+    .valid {
+        color: green;
+    }
+</style>
+
+
+
+<section style="background-color: #d2c9ff;">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center">Add Product</h2>
+                <form name="myForm" id="add-product" action="/admin/add-product" method="post"
+                    enctype="multipart/form-data" onsubmit="return validation1(),validation2(),validation3(),validation4()">
+
+                    <div class="mb-5">
+                        <label for="">Product Name</label>
+                        <input id="name" type="text" name="name" class="form-control">
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="">Brand Name</label>
+                        <input id="brandname" type="text" name="brandname" class="form-control">
+                    </div>
+
+
+
+                    <div class="category mb-5">
+                        <select id="category" name="category" class="form-select" aria-label="Default select example">
+                            <option selected>Category</option>
+                            {{#each mainCate}}
+                            <option value="{{this.maincategory}}">{{this.maincategory}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+
+                    <div class="subcategory mb-5">
+                        <select id="subcategory" name="subcategory" class="form-select"
+                            aria-label="Default select example">
+                            <option selected>Sub Category</option>
+                            {{#each subCate}}
+                            <option value="{{this.subcategory}}">{{this.subcategory}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="" for="">Stock</label>
+                        <input id="stock" type="text" name="stock" class="form-control">
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="" for="">Original Price</label>
+                        <input id="price" type="text" name="price" class="form-control">
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="">Old Price</label>
+                        <input id="brandname" type="text" name="oldprice" class="form-control">
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="">Description</label>
+                        <input id="description" type="text" name="description" class="form-control">
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="">Image 1</label>
+                        <input id="image1" type="file" name="image1" class="form-control">
+                        <p id="imgErr1" class="text-danger"></p>
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="">Image 2</label>
+                        <input id="image2" type="file" name="image2" class="form-control">
+                        <p id="imgErr2" class="text-danger"></p>
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="">Image 3</label>
+                        <input id="image3" type="file" name="image3" class="form-control">
+                        <p id="imgErr3" class="text-danger"></p>
+                    </div>
+
+
+                    <div class="mb-5">
+                        <label for="">Image 4</label>
+                        <input id="image4" type="file" name="image4" class="form-control">
+                        <p id="imgErr4" class="text-danger"></p>
+                    </div>
+
+
+                    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    //image1
+    let img1 = document.forms["myForm"]["image1"];
+    function validation1() {
+        console.log("Image validation working")
+        if (img1.value != "") {
+            console.log(suii)
+        } else {
+            console.log("no image found")
+            document.getElementById("imgErr1").innerHTML = "Please upload an image."
+            return false
+        }
+    }
+
+    //image2
+    let img2 = document.forms["myForm"]["image2"];
+    function validation2() {
+        console.log("Image validation working")
+        if (img2.value != "") {
+            console.log("suii")
+        } else {
+            console.log("no image found")
+            document.getElementById("imgErr2").innerHTML = "Please upload an image."
+            return false
+        }
+    }
+    //image3
+    let img3 = document.forms["myForm"]["image3"];
+    function validation3() {
+        console.log("Image validation working")
+        if (img3.value != "") {
+            console.log("suii")
+        } else {
+            console.log("no image found")
+            document.getElementById("imgErr3").innerHTML = "Please upload an image."
+            return false
+        }
+    }
+    //image4
+    let img4 = document.forms["myForm"]["image4"];
+    function validation4() {
+        console.log("Image validation working")
+        if (img4.value != "") {
+            console.log("suii")
+        } else {
+            console.log("no image found")
+            document.getElementById("imgErr4").innerHTML = "Please upload an image."
+            return false
+        }
+    }
+
+
+
+
+
+
+    $(document).ready(function () {
+        $("#add-product").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 4,
+                },
+                brandname: {
+                    required: true,
+                    minlength: 3,
+                },
+                category: {
+                    required: true
+                },
+                subcategory: {
+                    required: true
+                },
+                stock: {
+                    required: true
+                },
+                price: {
+                    required: true
+                },
+                description: {
+                    required: true
+                },
+                oldprice:{
+                    required:true
+                }
+            }
+        });
+    })
+
+
+</script>

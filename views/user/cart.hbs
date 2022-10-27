@@ -1,0 +1,500 @@
+<style>
+    @media (min-width: 500px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+
+    .bg-grey {
+        background-color: #eae8e8;
+    }
+
+    @media (min-width: 992px) {
+        .card-registration-2 .bg-grey {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .card-registration-2 .bg-grey {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+
+    @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+
+
+.mt-100{
+   margin-top:100px;
+
+}
+
+
+.card {
+    margin-bottom: 30px;
+    border: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    letter-spacing: .5px;
+    border-radius: 8px;
+    -webkit-box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+}
+
+.card .card-header {
+    background-color: #fff;
+    border-bottom: none;
+    padding: 24px;
+    border-bottom: 1px solid #f6f7fb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+
+
+.card .card-body {
+    padding: 30px;
+    background-color: transparent;
+}
+
+.btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+    background-color: #4466f2!important;
+    border-color: #4466f2!important;
+}
+
+
+  
+.footer {
+  background-color: #282c34;
+  width: 100%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 50px;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+  width: 33%;
+  padding-right: 15px;
+}
+
+.footer .about {
+  line-height: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer .icons {
+  margin-top: 25px;
+}
+
+.footer .icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+
+/* footer center*/
+
+.footer .footer-center {
+  width: 30%;
+}
+
+.footer .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer .footer-center p a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+
+/* footer right*/
+
+.footer .footer-right {
+  width: 35%;
+}
+
+.footer h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer h2 span {
+  color: #0099ff;
+}
+
+.footer .menu {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .menu a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .menu a:hover {
+  color: #0099ff;
+}
+
+.footer .name {
+  color: #0099ff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+  }
+  .footer .footer-left,
+  .footer .footer-center,
+  .footer .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .footer .footer-center i {
+    margin-left: 0;
+  }
+}
+
+</style>
+
+
+<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-8">
+                                <div class="p-5">
+                                    <div class="d-flex justify-content-between align-items-center mb-5">
+                                        <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
+                                        
+                                    </div>
+                                    {{#if cartempty}}
+                                    <div class="container-fluid  mt-100">
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+
+                                                <div class="card">
+                                                    <div class="card-body cart">
+                                                        <div class="col-sm-12 empty-cart-cls text-center">
+                                                            <img src="https://i.imgur.com/dCdflKN.png" width="130"
+                                                                height="130" class="img-fluid mb-4 mr-3">
+                                                            <h3><strong>Your Cart is Empty</strong></h3>
+                                                            <h4>Add something to make me happy</h4>
+                                                            <a href="/shopnow" class="btn btn-primary cart-btn-transform m-3"
+                                                                data-abc="true">continue shopping</a>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                    {{/if}}
+                                    {{#each products}}
+                                    <hr class="my-4">
+
+                                    <div class="row mb-4 d-flex justify-content-between align-items-center">
+                                        <div class="col-md-2 col-lg-2 col-xl-2">
+                                            <img src="/product-images/{{this.product._id}}.jpg"
+                                                class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-3">
+                                            <h6 class="text-muted">{{this.product.name}}</h6>
+                                            <h6 class="text-black mb-0">Cotton T-shirt</h6>
+                                        </div>
+                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                            <button class="btn btn-link px-2"
+                                                onclick="changeQuantity('{{this.product.price}}','{{this._id}}','{{this.product._id}}',-1)">
+                                                <i class="bi bi-dash-circle-fill"></i>
+
+                                            </button>
+
+                                            <span id="{{this.product._id}}">{{this.quantity}}</span>
+                                            {{!-- <input id="form1" min="0" name="quantity" value="1" type="number"
+                                                class="form-control form-control-sm" /> --}}
+
+                                            <button class="btn btn-link px-2"
+                                                onclick="changeQuantity('{{this.product.price}}','{{this._id}}','{{this.product._id}}',1)">
+                                                <i class="bi bi-plus-circle-fill"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                            <h6 class="mb-0">{{this.product.price}}</h6>
+                                        </div>
+
+
+                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                            <a data-bs-toggle="modal" data-bs-target="#ModelBlock{{this._id}}"
+                                                class="btn btn-danger "><i class="bi bi-trash3-fill"></i></a>
+
+
+
+                                            <div class="modal fade" id="ModelBlock{{this._id}}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                                Are you sure
+                                                                to remove {{this.product.name}} from your cart ?
+                                                            </h5>
+
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal">Cancel</button>
+                                                            <a href="/remove-product/?cartId={{this._id}}&proId={{this.product._id}}"
+                                                                type="button" class="btn btn-danger">Remove</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+
+                                    {{!-- <div class="pt-5">
+                                        <h6 class="mb-0"><a href="#!" class="text-body"><i
+                                                    class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                    </div> --}}
+                                </div>
+                            </div>
+                            <div class="col-lg-4 bg-grey">
+                                <div class="p-5">
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-4">
+                                        <h5 class="text-uppercase">items</h5>
+                                        <h5><span id="subtotal">{{totalValue}}</span></h5>
+                                    </div>
+
+                                    <h5 class="text-uppercase mb-3">Shipping</h5>
+                                    <h5>Free</h5>
+                                    <div class="mb-4 pb-2">
+                                    </div>
+
+
+
+                                    <hr class="my-4">
+
+                                    <div class="d-flex justify-content-between mb-5">
+                                        <h5 class="text-uppercase">Total price</h5>
+                                        <h5>Rs.<span id="total">{{totalValue}}</span></h5>
+                                    </div>
+
+                                    <a class="btn btn-dark btn-block btn-lg" href="/place-order">Proceed To
+                                        Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+  <div style="background-color: transparent;" class="footer-left col-md-4 col-sm-6">
+    <p class="about">
+      <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+      ultricies feugiat leo. Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante sed, viverra massa.
+    </p>
+    <div class="icons">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-google"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-center col-md-4 col-sm-6">
+    <div>
+      <i class="bi bi-geo-alt-fill"></i>
+      <p><span> F4FASHION Tagore Nagar</span> Vazhuthacadu, Trivandrum</p>
+    </div>
+    <div>
+      <i class="bi bi-telephone-fill"></i>
+      <p> (+91) 7356 373 621</p>
+    </div>
+    <div>
+      <i class="bi bi-envelope-fill"></i>
+      <p><a href="#"> f4fashion@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right col-md-4 col-sm-6">
+    <h2> Company<span> logo</span></h2>
+    <p class="menu">
+      <a href="#"> Home</a> |
+      <a href="#"> About</a> |
+      <a href="#"> Services</a> |
+      <a href="#"> Portfolio</a> |
+      <a href="#"> News</a> |
+      <a href="#"> Contact</a>
+    </p>
+    <p class="name"> Company Name &copy; 2016</p>
+  </div>
+</footer>
+
+<script>
+    var Handlebars = require('handlebars');
+
+    Handlebars.registerHelper("inc", function (value, options) {
+        return parseInt(value) + 1;
+    });
+
+    function changeQuantity(prodPrice, cartId, proId, count) {
+        console.log("working")
+        const quantity = parseInt(document.getElementById(proId).innerHTML)
+        count = parseInt(count)
+        $.ajax({
+            url: '/change-product-quantity',
+            data: {
+                cart: cartId,
+                product: proId,
+                count: count,
+                quantity: quantity
+            },
+            method: 'post',
+            success: (response) => {
+
+                if (response.removeProduct) {
+                    location.reload()
+                } else {
+                    document.getElementById(proId).innerHTML = quantity + count
+                    //document.getElementById(proId).value = quantity + count
+
+                    const totalPriceFeald = document.getElementById("subtotal")
+                    const finalPriceFeald = document.getElementById("total")
+                    const cartIndication = document.getElementById("cart-count")
+
+                    // changing the product price,quantity accoding to ajx action
+                    const currentPrice = parseInt(totalPriceFeald.innerHTML)
+                    const currentFinalPrice = parseInt(finalPriceFeald.innerHTML)
+                    const currentCartCount = parseInt(cartIndication.innerHTML)
+
+                    //changing the cart count 
+                    cartIndication.innerHTML = currentCartCount + count
+
+                    //changing the total price of price feald
+                    console.log("prodhbhj")
+                    console.log()
+                    console.log(finalPriceFeald)
+                    console.log(currentFinalPrice)
+                    console.log(prodPrice)
+                    if (count == -1) {
+                        totalPriceFeald.innerHTML = (currentPrice - parseInt(prodPrice))
+                        finalPriceFeald.innerHTML = (currentFinalPrice - parseInt(prodPrice))
+                    } else {
+                        totalPriceFeald.innerHTML = (currentPrice + parseInt(prodPrice))
+                        finalPriceFeald.innerHTML = (currentFinalPrice + parseInt(prodPrice))
+                    }
+                }
+            }
+        })
+    }
+
+</script>

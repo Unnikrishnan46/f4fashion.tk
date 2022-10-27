@@ -1,0 +1,324 @@
+<style>
+	.error {
+    color: red;
+    margin-bottom: 0;
+  }
+
+  .valid {
+    color: green;
+  }
+
+
+  
+.footer {
+  background-color: #282c34;
+  width: 100%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 50px;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+  width: 33%;
+  padding-right: 15px;
+}
+
+.footer .about {
+  line-height: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer .icons {
+  margin-top: 25px;
+}
+
+.footer .icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+
+/* footer center*/
+
+.footer .footer-center {
+  width: 30%;
+}
+
+.footer .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer .footer-center p a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+
+/* footer right*/
+
+.footer .footer-right {
+  width: 35%;
+}
+
+.footer h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer h2 span {
+  color: #0099ff;
+}
+
+.footer .menu {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .menu a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .menu a:hover {
+  color: #0099ff;
+}
+
+.footer .name {
+  color: #0099ff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+  }
+  .footer .footer-left,
+  .footer .footer-center,
+  .footer .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .footer .footer-center i {
+    margin-left: 0;
+  }
+}
+
+</style>
+<div class="container" style="background-color: #d2c9ff !important;">
+	<div class="container col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 edit_information">
+		<form action="/edit-profile/{{user._id}}" method="POST" enctype="multipart/form-data" id="profile-form" name="myForm" onsubmit="return validation()">
+			<h3 class="text-center mb-4 mt-4">Edit Personal Information</h3>
+			<center><img id="imgView" class="mb-4" style="height: 10rem; width: 10rem; border-radius: 50%;"
+					src="/profile-images/{{userId}}.jpg" alt="Profile photo here"></center>
+			<center><input style="margin-left: 5rem;" class="mb-5" onchange="viewImage1(event)" type="file" name="image" id="name"></center>
+			<center><p id="imgErr" class="text-danger"></p></center>
+			{{#if imageErr}}
+			<p style="color: red;">Add a photo</p>
+			{{/if}}
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="profile_details_text">User Name</label>
+						<input type="text" name="username" class="form-control" value="{{user.username}}" required>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+					<div class="form-group">
+						<label class="profile_details_text">Phonenumber</label>
+						<input type="text" name="phonenumber" class="form-control" value="{{user.phonenumber}}"
+							required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form-group">
+						<label class="profile_details_text">Email Address</label>
+						<input type="email" name="email" class="form-control" value="{{user.email}}" required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form-group">
+						<label class="profile_details_text">Date Of Birth:</label>
+						<input type="date" name="birthday" class="form-control" value="{{user.birthday}}" required>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+					<div class="form-group">
+						<label class="profile_details_text">Gender:</label>
+						<select name="gender" class="form-control" value="{{user.gender}}" required>
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 submit">
+					<div class="form-group">
+						<input type="submit" class="btn btn-success my-4 mb-5" value="Submit">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+
+<footer class="footer">
+  <div style="background-color: transparent;" class="footer-left col-md-4 col-sm-6">
+    <p class="about">
+      <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+      ultricies feugiat leo. Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante sed, viverra massa.
+    </p>
+    <div class="icons">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-google"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-center col-md-4 col-sm-6">
+    <div>
+      <i class="bi bi-geo-alt-fill"></i>
+      <p><span> F4FASHION Tagore Nagar</span> Vazhuthacadu, Trivandrum</p>
+    </div>
+    <div>
+      <i class="bi bi-telephone-fill"></i>
+      <p> (+91) 7356 373 621</p>
+    </div>
+    <div>
+      <i class="bi bi-envelope-fill"></i>
+      <p><a href="#"> f4fashion@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right col-md-4 col-sm-6">
+    <h2> Company<span> logo</span></h2>
+    <p class="menu">
+      <a href="#"> Home</a> |
+      <a href="#"> About</a> |
+      <a href="#"> Services</a> |
+      <a href="#"> Portfolio</a> |
+      <a href="#"> News</a> |
+      <a href="#"> Contact</a>
+    </p>
+    <p class="name"> Company Name &copy; 2016</p>
+  </div>
+</footer>
+
+
+<script>
+
+	 let img = document.forms["myForm"]["image"];
+    function validation() {
+        console.log("Image validation working")
+        if (img.value != "") {
+            console.log(suii)
+        } else {
+			console.log("no image found")
+            document.getElementById("imgErr").innerHTML = "Please upload an image."
+            return false
+        }
+    }
+
+	function viewImage1(event) {
+		document.getElementById('imgView').src = URL.createObjectURL(event.target.files[0])
+	}
+
+	$(document).ready(function () {
+		$("#profile-form").validate({
+			rules: {
+				username: {
+					required: true,
+				},
+				phonenumber: {
+					required: true,
+				},
+				email:{
+					required:true,
+					email:true
+				},
+				birthday:{
+					required:true,
+				}
+			}
+		});
+	})
+</script>

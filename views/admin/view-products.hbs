@@ -1,0 +1,352 @@
+<style>
+  .search-bar {
+    display: flex;
+  }
+
+  body {
+    background: #f1f1f1;
+    height: 100vh;
+  }
+
+  .search-bar input,
+  .search-btn,
+  .search-btn:before,
+  .search-btn:after {
+    transition: all 0.25s ease-out;
+  }
+
+  .search-bar input,
+  .search-btn {
+    width: 3em;
+    height: 3em;
+  }
+
+  .search-bar input:invalid:not(:focus),
+  .search-btn {
+    cursor: pointer;
+  }
+
+  .search-bar,
+  .search-bar input:focus,
+  .search-bar input:valid {
+    width: 100%;
+  }
+
+  .search-bar input:focus,
+  .search-bar input:not(:focus)+.search-btn:focus {
+    outline: transparent;
+  }
+
+  .search-bar {
+    margin: auto;
+
+    justify-content: center;
+    max-width: 30em;
+  }
+
+  .search-bar input {
+    background: transparent;
+    border-radius: 1.5em;
+    box-shadow: 0 0 0 0.4em #171717 inset;
+
+    transform: translate(0.5em, 0.5em) scale(0.5);
+    transform-origin: 100% 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  .search-bar input::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  .search-bar input:focus,
+  .search-bar input:valid {
+    background: #fff;
+    border-radius: 0.375em 0 0 0.375em;
+    box-shadow: 0 0 0 0.1em #d9d9d9 inset;
+    transform: scale(1);
+  }
+
+  .search-btn {
+    background: #171717;
+    border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
+
+    position: relative;
+    transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
+    transform-origin: 0 50%;
+  }
+
+  .search-btn:before,
+  .search-btn:after {
+    content: "";
+    display: block;
+    opacity: 0;
+    position: absolute;
+  }
+
+  .search-btn:before {
+    border-radius: 50%;
+    box-shadow: 0 0 0 0.2em #f1f1f1 inset;
+    top: 0.75em;
+    left: 0.75em;
+    width: 1.2em;
+    height: 1.2em;
+  }
+
+  .search-btn:after {
+    background: #f1f1f1;
+    border-radius: 0 0.25em 0.25em 0;
+    top: 51%;
+    left: 51%;
+    width: 0.75em;
+    height: 0.25em;
+    transform: translate(0.2em, 0) rotate(45deg);
+    transform-origin: 0 50%;
+  }
+
+  .search-btn span {
+    display: inline-block;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+  }
+
+  /* Active state */
+  .search-bar input:focus+.search-btn,
+  .search-bar input:valid+.search-btn {
+    background: #2762f3;
+    border-radius: 0 0.375em 0.375em 0;
+    transform: scale(1);
+  }
+
+  .search-bar input:focus+.search-btn:before,
+  .search-bar input:focus+.search-btn:after,
+  .search-bar input:valid+.search-btn:before,
+  .search-bar input:valid+.search-btn:after {
+    opacity: 1;
+  }
+
+  .search-bar input:focus+.search-btn:hover,
+  .search-bar input:valid+.search-btn:hover,
+  .search-bar input:valid:not(:focus)+.search-btn:focus {
+    background: #0c48db;
+  }
+
+  .search-bar input:focus+.search-btn:active,
+  .search-bar input:valid+.search-btn:active {
+    transform: translateY(1px);
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+
+    body,
+    input {
+      color: #f1f1f1;
+    }
+
+    body {
+      background: #171717;
+    }
+
+    .search-bar input {
+      box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+    }
+
+    .search-bar input:focus,
+    .search-bar input:valid {
+      background: #3d3d3d;
+      box-shadow: 0 0 0 0.1em #3d3d3d inset;
+    }
+
+    .search-btn {
+      background: #f1f1f1;
+    }
+  }
+
+
+
+
+  .content {
+    padding: 10px;
+  }
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    border-collapse: collapse;
+    border: 1px solid #000000;
+    padding: 10px;
+  }
+
+  th {
+    background: #e143b0;
+    color: #4d0707;
+  }
+
+  td {
+    background: black;
+    color: #000000;
+  }
+
+  @media (max-width: 780px) {
+    thead {
+      display: none;
+    }
+
+    .table,
+    tbody,
+    tr,
+    td {
+      display: block;
+      width: 100%;
+    }
+
+    tr {
+      margin-bottom: 20px;
+    }
+
+    td::before {
+      content: attr(data-label);
+      color: #4d0707;
+      font-weight: bold;
+    }
+
+    td {
+      padding: 0;
+      padding-left: 30%;
+      position: relative;
+      background: #e143b0;
+      color: #ffffff;
+    }
+
+    td {
+      display: block;
+      width: 100%;
+      background: #ffffff;
+      color: #000000;
+    }
+
+  }
+</style>
+
+{{!--
+<section class="searchcoming">
+  <form action="" class="search-bar">
+    <input onkeyup="mynction()" id="myInput" type="text" name="search" required>
+    <button class="search-btn" type="submit">
+      <span>Search</span>
+    </button>
+  </form>
+</section> --}}
+
+<section>
+  {{!-- <div class="container">
+    <div class="row">
+      <a href="/admin/add-product" class="btn btn-success mt-4 mb-3 w-25">Add Products</a>
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Add Category
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="/admin/add-category">Main Category</a></li>
+          <li><a class="dropdown-item" href="/admin/add-subcategory">Sub Category</a></li>
+        </ul>
+      </div>
+      <a href="/admin/add-coupen" class="btn btn-Warning mt-4 mb-3 w-25">Add Coupen</a>
+    </div>
+  </div> --}}
+  <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      {{!-- <a class="navbar-brand" href="#">Navbar</a> --}}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mx-auto">
+          <a style="margin-left: 1rem;" href="/admin/add-product" class="btn btn-success h-25">Add Products</a>
+          {{!-- Add catogery Dropdown --}}
+          <div style="margin-left: 1rem;" class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Add Category
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/admin/add-category">Main Category</a></li>
+              <li><a class="dropdown-item" href="/admin/add-subcategory">Sub Category</a></li>
+            </ul>
+          </div>
+
+           {{!-- search suii --}}
+          <section style="margin-left: 1rem;" class="searchcoming">
+            <form action="/search" class="search-bar">
+              <input id="searchProduct" type="search" name="search" required>
+              <button class="search-btn" type="submit">
+                <span>Search</span>
+              </button>
+            </form>
+          </section>
+
+          {{!-- search Suii --}}
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+
+
+
+<div style="background-color: #d2c9ff;" class="content">
+  <table style="background-color: white;" id="myTable" class="table">
+    <thead style="background-color: #0d6efd;">
+      <tr>
+        <th style="color: white;">No</th>
+        <th style="color: white;">Title</th>
+        <th style="color: white;">Category</th>
+        <th style="color: white;">Sub Category</th>
+        <th style="color: white;">Price</th>
+        <th style="color: white;">Stock</th>
+        <th style="color: white;">Image</th>
+        <th style="color: white;">Edit/Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+      <tr>
+        <td data-label="No">1</td>
+        <td data-label="Product Name" class="suii">{{this.name}}</td>
+        <td data-label="Category Name">{{this.category}}</td>
+        <td data-label="Subcategory Name">{{this.subcategory}}</td>
+        <td data-label="Price">{{this.price}}</td>
+        <td data-label="Status">{{this.stock}}</td>
+        <td data-label="Image"><img style="width: 50px; height: 50px;" src="/product-images/{{this._id}}.jpg" alt="">
+        </td>
+        <td data-label="Edit/Delete"><a href="/admin/edit-product/{{this._id}}" class="btn btn-primary">Edit</a>
+          <a href="/admin/delete-product/{{this._id}}" class="btn btn-danger"
+            onclick="return confirm('Are you want to delete {{this.name}}')">Delete</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+<script>
+  $("#search").submit(e => {
+    if ($("#searchProduct").val()) {
+      $("#search").submit()
+    }
+    else {
+      e.preventDefault();
+    }
+
+  })
+</script>

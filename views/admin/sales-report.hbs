@@ -1,0 +1,75 @@
+{{!-- dropdown menu --}}
+<div class="container mt-4">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Download Sales Report
+        </button>
+        <ul class="dropdown-menu">
+            <li><a onclick="downloadPdf('pt')" class="dropdown-item" href="">Sales Report PDF</a></li>
+            <li><a onclick="ExportToExcel('xlsx')" class="dropdown-item" href="">Sales Report Excel</a></li>
+        </ul>
+    </div>
+</div>
+
+{{!-- dropdown menu --}}
+<div id="pt">
+<table id="tbl_exporttable_to_xls" class="table mt-5">
+    <thead class="table-dark">
+        <tr>
+            <th>Sl No.</th>
+            <th>Date</th>
+            <th>OrderId</th>
+            <th>Name</th>
+            <th>Products</th>
+            <th>Payment Method</th>
+            <th>Status</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each salesReport}}
+        <tr>
+            <td>1</td>
+            <td>{{this.date}}</td>
+            <td>{{this._id}}</td>
+            <td>{{this.deliveryDetails.name}}</td>
+            <td>
+                {{#each this.product}}
+                {{this.name}} <br>
+                {{/each}}
+            </td>
+            <td>{{this.paymentMethod}}</td>
+            <td>{{this.status}}</td>
+            <td>{{this.totalamount}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+</div>
+
+
+<script>
+
+//Export to Excel
+
+    function ExportToExcel(type, fn, dl) {
+        console.log('excel working')
+        var elt = document.getElementById('tbl_exporttable_to_xls');
+        var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+        return dl ?
+            XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+            XLSX.writeFile(wb, fn || ('F4FASHION_Sales_Report.' + (type || 'xlsx')));
+    }
+
+//Download PDF
+
+    function downloadPdf(pt) {
+        console.log('Pdf working')
+        var bk = document.body.innerHTML
+        var dv = document.getElementById('pt').innerHTML
+        document.body.innerHTML = dv
+        document.body.style.padding = '20px'
+        window.print();
+        location.reload();
+    }
+</script>

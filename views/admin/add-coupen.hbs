@@ -1,0 +1,59 @@
+<style>
+  .error {
+        color: red;
+        margin-bottom: 0;
+    }
+
+    .valid {
+        color: green;
+    }
+</style>
+
+<section class="vh-100" style="background-color: #d2c9ff;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+              
+            <form action="/admin/add-coupen" method="post" id="coupen-form">
+            <h3 class="mb-5">Coupen Code</h3>
+            <center><img src="/img/suii logo.png" alt=""></center>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typeEmailX-2">Coupen Code</label>
+              <input name="code" type="text" id="text" class="form-control form-control-lg" />
+            </div>
+
+            <div class="form-outline mb-4">
+              <label class="form-label" for="typePasswordX-2">Reduse Price</label>
+              <input name="value" type="number" id="reduceprice" class="form-control form-control-lg" />
+            </div>           
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Submit</button><br><br>
+              
+            <hr class="my-4">
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+   $(document).ready(function () {
+    $("#coupen-form").validate({
+      rules: {
+        code: {
+          required: true,
+        },
+        value:{
+          required:true,
+        }
+      }
+    });
+  })
+</script>
+

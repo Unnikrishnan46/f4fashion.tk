@@ -1,0 +1,119 @@
+<style>
+    .content {
+        padding: 10px;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border-collapse: collapse;
+        border: 1px solid #000000;
+        padding: 10px;
+    }
+
+    th {
+        background: #e143b0;
+        color: #4d0707;
+    }
+
+    td {
+        background: black;
+        color: #000000;
+    }
+
+    @media (max-width: 780px) {
+        thead {
+            display: none;
+        }
+
+        .table,
+        tbody,
+        tr,
+        td {
+            display: block;
+            width: 100%;
+        }
+
+        tr {
+            margin-bottom: 20px;
+        }
+
+        td::before {
+            content: attr(data-label);
+            color: #4d0707;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 0;
+            padding-left: 30%;
+            position: relative;
+            background: #e143b0;
+            color: #ffffff;
+        }
+
+        td span {
+            display: block;
+            width: 100%;
+
+            background: #ffffff;
+            color: #000000;
+        }
+
+    }
+</style>
+
+<div style="background-color: #d2c9ff;" class="container">
+    <a style="background-color: #d2c9ff;" href="/admin/add-coupen" class="btn btn-sm">Add Coupen</a>
+</div>
+
+<div style="background-color: #d2c9ff;" class="content mt-4">
+    <table style="background-color: white;" class="table">
+        <thead style="background-color: blue;">
+            <tr>
+                <th style="color: white;">No</th>
+                <th style="color: white;">Coupen Code</th>
+                <th style="color: white;">Price Value</th>
+                <th style="color: white;">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each coupenDetails}}
+            <tr>
+                <td data-label="SlNo."><span>1</span></td>
+                <td data-label="Coupen Code   "><span>{{this.code}}</span></td>
+                <td data-label="Price Value   "><span>Rs .{{this.value}}</span></td>
+
+                <td data-label="Delete   "><span>
+                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                            <a data-bs-toggle="modal" data-bs-target="#ModelBlock" class="btn btn-danger "><i
+                                    class="bi bi-trash3-fill"></i></a>
+                            <div class="modal fade" id="ModelBlock" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                                Are you sure to remove ?
+                                            </h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <a href="/admin/delete-coupen/{{this._id}}" type="button"
+                                                class="btn btn-danger">Delete</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </span></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

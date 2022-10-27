@@ -1,0 +1,386 @@
+<style>
+    /* Cart or Wishlist */
+    .shopping-cart .cart-header {
+        padding: 10px;
+    }
+
+    .shopping-cart .cart-header h4 {
+        font-size: 18px;
+        margin-bottom: 0px;
+    }
+
+    .shopping-cart .cart-item a {
+        text-decoration: none;
+    }
+
+    .shopping-cart .cart-item {
+        background-color: #fff;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+        padding: 10px 10px;
+        margin-top: 10px;
+    }
+
+    .shopping-cart .cart-item .product-name {
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .shopping-cart .cart-item .price {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 4px 2px;
+    }
+
+    .shopping-cart .btn1 {
+        border: 1px solid;
+        margin-right: 3px;
+        border-radius: 0px;
+        font-size: 10px;
+    }
+
+    .shopping-cart .btn1:hover {
+        background-color: #2874f0;
+        color: #fff;
+    }
+
+    .shopping-cart .input-quantity {
+        border: 1px solid #000;
+        margin-right: 3px;
+        font-size: 12px;
+        width: 40%;
+        outline: none;
+        text-align: center;
+    }
+
+
+    
+.footer {
+  background-color: #282c34;
+  width: 100%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 50px;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+  width: 33%;
+  padding-right: 15px;
+}
+
+.footer .about {
+  line-height: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer .icons {
+  margin-top: 25px;
+}
+
+.footer .icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+
+/* footer center*/
+
+.footer .footer-center {
+  width: 30%;
+}
+
+.footer .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer .footer-center p a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+
+/* footer right*/
+
+.footer .footer-right {
+  width: 35%;
+}
+
+.footer h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer h2 span {
+  color: #0099ff;
+}
+
+.footer .menu {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .menu a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .menu a:hover {
+  color: #0099ff;
+}
+
+.footer .name {
+  color: #0099ff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+  }
+  .footer .footer-left,
+  .footer .footer-center,
+  .footer .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .footer .footer-center i {
+    margin-left: 0;
+  }
+}
+
+    /* Cart or Wishlist */
+</style>
+
+{{#if wishlistEmpty}}
+<div class="container-fluid  mt-100">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body cart">
+                    <div class="col-sm-12 empty-cart-cls text-center">
+                        <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                        <h3><strong>Your Wishlist is Empty</strong></h3>
+                        <h4>Add something to make me happy</h4>
+                        <a href="/shopnow" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue
+                            shopping</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{else}}
+
+
+
+<div style="min-height: 40rem;" class="py-3 py-md-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="shopping-cart">
+
+                    <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Products</h4>
+                            </div>
+                            <div class="col-md-2">
+                                <h4>Price</h4>
+                            </div>
+                            <div class="col-md-2">
+                                <h4>To Cart</h4>
+                            </div>
+                            <div class="col-md-2">
+                                <h4>Remove</h4>
+                            </div>
+                        </div>
+                    </div>
+                    {{#each wish}}
+                    <div class="cart-item">
+                        <div class="row">
+                            <div class="col-md-6 my-auto">
+                                <a href="">
+                                    <label class="product-name">
+                                        <img src="/product-images/{{this.product._id}}.jpg"
+                                            style="width: 50px; height: 50px" alt="">
+                                        {{this.product.name}}
+                                    </label>
+                                </a>
+                            </div>
+                            <div class="col-md-2 my-auto">
+                                <label class="price">Rs. {{this.product.price}} </label>
+                            </div>
+                            <div class="col-md-2 col-7 my-auto">
+                                <div class="quantity">
+                                    <h6><a onclick="addToCart('{{product._id}}')" class="btn btn-primary" href="">Add to
+                                            Cart</a></h6>
+                                </div>
+                            </div>
+
+                            {{!-- <div class="col-md-2 col-7 my-auto">
+                                <div class="addto">
+                                    <a class="btn btn-primary" href="">Add to Cart</a>
+                                </div>
+                            </div> --}}
+
+
+
+                            <div class="col-md-2 col-5 my-auto">
+                                <div class="remove">
+                                    <a data-bs-toggle="modal" data-bs-target="#ModelBlock{{this._id}}"
+                                        class="btn btn-danger ">Remove</a>
+
+
+
+                                    <div class="modal fade" id="ModelBlock{{this._id}}" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title text-danger" id="exampleModalLabel">Are you
+                                                        sure
+                                                        to remove {{this.product.name}} from your wishlist ?
+                                                    </h5>
+
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Cancel</button>
+                                                    <a href="/remove-product-wishlist/{{this.product._id}}"
+                                                        type="button" class="btn btn-danger">Remove</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{{/if}}
+
+
+
+<footer class="footer">
+  <div style="background-color: transparent;" class="footer-left col-md-4 col-sm-6">
+    <p class="about">
+      <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+      ultricies feugiat leo. Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante sed, viverra massa.
+    </p>
+    <div class="icons">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-google"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-center col-md-4 col-sm-6">
+    <div>
+      <i class="bi bi-geo-alt-fill"></i>
+      <p><span> F4FASHION Tagore Nagar</span> Vazhuthacadu, Trivandrum</p>
+    </div>
+    <div>
+      <i class="bi bi-telephone-fill"></i>
+      <p> (+91) 7356 373 621</p>
+    </div>
+    <div>
+      <i class="bi bi-envelope-fill"></i>
+      <p><a href="#"> f4fashion@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right col-md-4 col-sm-6">
+    <h2> Company<span> logo</span></h2>
+    <p class="menu">
+      <a href="#"> Home</a> |
+      <a href="#"> About</a> |
+      <a href="#"> Services</a> |
+      <a href="#"> Portfolio</a> |
+      <a href="#"> News</a> |
+      <a href="#"> Contact</a>
+    </p>
+    <p class="name"> Company Name &copy; 2016</p>
+  </div>
+</footer>

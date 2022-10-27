@@ -1,0 +1,319 @@
+<style>
+    
+.footer {
+  background-color: #282c34;
+  width: 100%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 50px;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+  width: 33%;
+  padding-right: 15px;
+}
+
+.footer .about {
+  line-height: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer .icons {
+  margin-top: 25px;
+}
+
+.footer .icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+
+/* footer center*/
+
+.footer .footer-center {
+  width: 30%;
+}
+
+.footer .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer .footer-center p a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+
+/* footer right*/
+
+.footer .footer-right {
+  width: 35%;
+}
+
+.footer h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer h2 span {
+  color: #0099ff;
+}
+
+.footer .menu {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .menu a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .menu a:hover {
+  color: #0099ff;
+}
+
+.footer .name {
+  color: #0099ff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+  }
+  .footer .footer-left,
+  .footer .footer-center,
+  .footer .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .footer .footer-center i {
+    margin-left: 0;
+  }
+}
+</style>
+
+
+<section style="background-color: #d2c9ff; min-height: 45rem;">
+    <div class="container mb-4">
+        <div class="row d-flex">
+            <h2 class="text-center mt-5">Add Address</h2>
+            <div class="l1 d-flex">
+                <div style="height: auto; text-align: center;" class="col-md-6 s1">
+                    <h1>Address 1</h1>
+                    <p style="font-weight: bolder;">{{address.address1.address}}</p>
+                    <p style="font-style: italic;">{{address.address1.pincode}}</p>
+                    <p style="font-style: italic;">{{address.address1.state}}</p>
+                    <p style="font-style: italic;">{{address.address1.district}}</p>
+                    <p style="font-style: italic;">{{address.address1.town}}</p>
+                    {{#if address.address1}}
+                    <a class="btn btn-light btn-sm" href="edit-address1">Edit Address 1</a>
+                    <a class="btn btn-light btn-sm" href="/default-address1">Set as Default</a>
+                    {{#if address.address1.default}}
+                    <i class="bi bi-check"></i>
+                    {{/if}}
+                    {{else}}
+                    <a class="btn btn-light btn-sm" href="/add-address1">Add Address 1</a>
+                    {{/if}}
+                </div>
+                <div style="height: auto;text-align: center;" class="col-md-6 s2">
+                    <h1>Address 2</h1>
+                    <p style="font-weight: bolder;">{{address.address2.address}}</p>
+                    <p style="font-style: italic;">{{address.address2.pincode}}</p>
+                    <p style="font-style: italic;">{{address.address2.state}}</p>
+                    <p style="font-style: italic;">{{address.address2.district}}</p>
+                    <p style="font-style: italic;">{{address.address2.town}}</p>
+                    {{#if address.address2}}
+                    <a class="btn btn-light btn-sm" href="/edit-address2">Edit Address 2</a>
+                    <a class="btn btn-light btn-sm" href="/default-address2">Set as Default</a>
+                    {{#if address.address2.default}}
+                    <i style="height: 50px; width: 50px;" class="bi bi-check"></i>
+                    {{/if}}
+                    {{else}}
+                    <a class="btn btn-light btn-sm" href="/add-address2">Add Address 2</a>
+                    {{/if}}
+                </div>
+            </div>
+            {{#if showAddress}}
+            <div class="col-md-6">
+                {{#if address1}}
+                <form name="myForm" id="edit-form" action="/add-address1" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+                {{else}}
+                <form name="myForm" id="edit-form" action="/add-address2" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+                {{/if}}
+
+                
+                    <div>
+                        <label for="">Address</label>
+                        <input type="text" name="address" class="form-control" value="">
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="">Pincode</label>
+                        <input type="text" name="pincode" class="form-control" value="">
+                    </div>
+
+                    <label class="mt-4" for="">State</label>
+                    <input type="text" name="state" class="form-control" value="">
+
+                    <label class="mt-4" for="">District</label>
+                    <input type="text" name="district" class="form-control" value="">
+
+                    <label class="mt-4" for="">Town</label>
+                    <input type="text" name="town" class="form-control" value="">
+
+                    <button type="submit" class="btn btn-primary mt-4 w-25 mb-5 h-25">Submit</button>
+                    {{/if}}
+                </form>
+            </div>
+
+            {{#if editAddress}}
+
+            <div class="col-md-6">
+                {{#if address1}}
+                <form name="myForm" id="edit-form" action="/edit-address1" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+                {{else}}
+                <form name="myForm" id="edit-form" action="/edit-address2" method="post" enctype="multipart/form-data" onsubmit="return validation()">
+                {{/if}}
+                        <h1>Edit Address</h1>
+                    <div>
+                        <label for="">Address</label>
+                        <input type="text" name="address" class="form-control" value="{{addressOne.address}}">
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="">Pincode</label>
+                        <input type="text" name="pincode" class="form-control" value="{{addressOne.pincode}}">
+                    </div>
+
+                    <label class="mt-4" for="">State</label>
+                    <input type="text" name="state" class="form-control" value="{{addressOne.state}}">
+
+                    <label class="mt-4" for="">District</label>
+                    <input type="text" name="district" class="form-control" value="{{addressOne.district}}">
+
+                    <label class="mt-4" for="">Town</label>
+                    <input type="text" name="town" class="form-control" value="{{addressOne.town}}">
+
+                    <button type="submit" class="btn btn-primary mt-4 w-25 mb-5 h-25">Submit</button>
+                </form>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</section>
+
+
+
+<footer class="footer">
+  <div style="background-color: transparent;" class="footer-left col-md-4 col-sm-6">
+    <p class="about">
+      <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+      ultricies feugiat leo. Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante sed, viverra massa.
+    </p>
+    <div class="icons">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-google"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-center col-md-4 col-sm-6">
+    <div>
+      <i class="bi bi-geo-alt-fill"></i>
+      <p><span> F4FASHION Tagore Nagar</span> Vazhuthacadu, Trivandrum</p>
+    </div>
+    <div>
+      <i class="bi bi-telephone-fill"></i>
+      <p> (+91) 7356 373 621</p>
+    </div>
+    <div>
+      <i class="bi bi-envelope-fill"></i>
+      <p><a href="#"> f4fashion@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right col-md-4 col-sm-6">
+    <h2> Company<span> logo</span></h2>
+    <p class="menu">
+      <a href="#"> Home</a> |
+      <a href="#"> About</a> |
+      <a href="#"> Services</a> |
+      <a href="#"> Portfolio</a> |
+      <a href="#"> News</a> |
+      <a href="#"> Contact</a>
+    </p>
+    <p class="name"> Company Name &copy; 2016</p>
+  </div>
+</footer>

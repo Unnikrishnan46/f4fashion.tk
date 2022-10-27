@@ -1,0 +1,569 @@
+<style>
+    .productimage:hover {
+        transition: transform 1s, filter 3s ease-in-out;
+        transform: scale(1.1);
+    }
+
+    .search-bar {
+        display: flex;
+    }
+
+    body {
+        background: #d2c9ff;
+        height: 100vh;
+    }
+
+    .search-bar input,
+    .search-btn,
+    .search-btn:before,
+    .search-btn:after {
+        transition: all 0.25s ease-out;
+    }
+
+    .search-bar input,
+    .search-btn {
+        width: 3em;
+        height: 3em;
+    }
+
+    .search-bar input:invalid:not(:focus),
+    .search-btn {
+        cursor: pointer;
+    }
+
+    .search-bar,
+    .search-bar input:focus,
+    .search-bar input:valid {
+        width: 100%;
+    }
+
+    .search-bar input:focus,
+    .search-bar input:not(:focus)+.search-btn:focus {
+        outline: transparent;
+    }
+
+    .search-bar {
+        margin: auto;
+        padding: 1.5em;
+        justify-content: center;
+        max-width: 30em;
+    }
+
+    .search-bar input {
+        background: transparent;
+        border-radius: 1.5em;
+        box-shadow: 0 0 0 0.4em #171717 inset;
+        padding: 0.75em;
+        transform: translate(0.5em, 0.5em) scale(0.5);
+        transform-origin: 100% 0;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .search-bar input::-webkit-search-decoration {
+        -webkit-appearance: none;
+    }
+
+    .search-bar input:focus,
+    .search-bar input:valid {
+        background: #fff;
+        border-radius: 0.375em 0 0 0.375em;
+        box-shadow: 0 0 0 0.1em #d9d9d9 inset;
+        transform: scale(1);
+    }
+
+    .search-btn {
+        background: #171717;
+        border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
+        padding: 0.75em;
+        position: relative;
+        transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
+        transform-origin: 0 50%;
+    }
+
+    .search-btn:before,
+    .search-btn:after {
+        content: "";
+        display: block;
+        opacity: 0;
+        position: absolute;
+    }
+
+    .search-btn:before {
+        border-radius: 50%;
+        box-shadow: 0 0 0 0.2em #f1f1f1 inset;
+        top: 0.75em;
+        left: 0.75em;
+        width: 1.2em;
+        height: 1.2em;
+    }
+
+    .search-btn:after {
+        background: #f1f1f1;
+        border-radius: 0 0.25em 0.25em 0;
+        top: 51%;
+        left: 51%;
+        width: 0.75em;
+        height: 0.25em;
+        transform: translate(0.2em, 0) rotate(45deg);
+        transform-origin: 0 50%;
+    }
+
+    .search-btn span {
+        display: inline-block;
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+    }
+
+    /* Active state */
+    .search-bar input:focus+.search-btn,
+    .search-bar input:valid+.search-btn {
+        background: #2762f3;
+        border-radius: 0 0.375em 0.375em 0;
+        transform: scale(1);
+    }
+
+    .search-bar input:focus+.search-btn:before,
+    .search-bar input:focus+.search-btn:after,
+    .search-bar input:valid+.search-btn:before,
+    .search-bar input:valid+.search-btn:after {
+        opacity: 1;
+    }
+
+    .search-bar input:focus+.search-btn:hover,
+    .search-bar input:valid+.search-btn:hover,
+    .search-bar input:valid:not(:focus)+.search-btn:focus {
+        background: #0c48db;
+    }
+
+    .search-bar input:focus+.search-btn:active,
+    .search-bar input:valid+.search-btn:active {
+        transform: translateY(1px);
+    }
+
+    @media screen and (prefers-color-scheme: dark) {
+
+        body,
+        input {
+            color: #f1f1f1;
+        }
+
+        body {
+            background: #171717;
+        }
+
+        .search-bar input {
+            box-shadow: 0 0 0 0.4em #f1f1f1 inset;
+        }
+
+        .search-bar input:focus,
+        .search-bar input:valid {
+            background: #3d3d3d;
+            box-shadow: 0 0 0 0.1em #3d3d3d inset;
+        }
+
+        .search-btn {
+            background: #f1f1f1;
+        }
+    }
+
+
+
+
+.footer {
+  background-color: #282c34;
+  width: 100%;
+  text-align: left;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 50px;
+}
+
+.footer .footer-left,
+.footer .footer-center,
+.footer .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+/* footer left*/
+
+.footer .footer-left {
+  width: 33%;
+  padding-right: 15px;
+}
+
+.footer .about {
+  line-height: 20px;
+  color: white;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer .about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer .icons {
+  margin-top: 25px;
+}
+
+.footer .icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+
+/* footer center*/
+
+.footer .footer-center {
+  width: 30%;
+}
+
+.footer .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer .footer-center p a {
+  color: #0099ff;
+  text-decoration: none;
+}
+
+
+/* footer right*/
+
+.footer .footer-right {
+  width: 35%;
+}
+
+.footer h2 {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer h2 span {
+  color: #0099ff;
+}
+
+.footer .menu {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer .menu a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer .menu a:hover {
+  color: #0099ff;
+}
+
+.footer .name {
+  color: #0099ff;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .footer {
+    font-size: 14px;
+  }
+  .footer .footer-left,
+  .footer .footer-center,
+  .footer .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .footer .footer-center i {
+    margin-left: 0;
+  }
+}
+
+</style>
+<div style="background-color: #d2c9ff;" class="container-fluid">
+    <div class="row px-xl-5">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-md-4 mt-2">
+            <!-- Price Start -->
+             {{!-- Search Form --}}
+                            <form id="search" action="/search" method="post" class="search-bar">
+                                <input id="searchProduct" type="search" name="search" pattern=".*\S.*"
+                                    required>
+                                <button class="search-btn" type="submit">
+                                    <span>Search</span>
+                                </button>
+                            </form>
+                            {{!-- Search Form --}}
+
+
+            <div class="bg-light p-4 mb-30">
+                <form action="/filter-price" method="post">
+                    <label for="sel1" class="form-label">Min Price:</label>
+                    <select class="form-select" id="miniValue" name="minValue">
+                        <option value="0">Rs. 0</option>
+                        <option value="1000">Rs. 1000</option>
+                        <option value="3000">Rs. 3000</option>
+                        <option value="6000">Rs. 6000</option>
+                        <option value="8000">Rs. 8000</option>
+                    </select>
+
+                    <div class="max-value mt-4">
+                        <label for="sel1" class="form-label">Max Price:</label>
+                        <select class="form-select" id="maxValue" name="maxValue">
+                            <option value="20000">Rs. 20000</option>
+                            <option value="15000">Rs. 15000</option>
+                            <option value="13000">Rs. 13000</option>
+                            <option value="12000">Rs. 12000</option>
+                            <option value="10000">Rs. 10000</option>
+                        </select>
+                    </div>
+                    <div class="mt-3">
+                    <center><button class="btn btn-secondary btn-sm" type="submit">Filter</button></center>
+                    </div>
+                </form>
+            </div>
+            <!-- Price End -->
+
+            <!-- Color Start -->
+            
+            <!-- Color End -->
+
+            <!-- Size Start -->
+            {{!-- <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-light pr-3">Filter by
+                    size</span></h5>
+            <div class="bg-light p-4 mb-30">
+                <form>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" checked id="size-all">
+                        <label class="custom-control-label" for="size-all">All Size</label>
+                        <span class="badge border font-weight-normal">1000</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="size-1">
+                        <label class="custom-control-label" for="size-1">XS</label>
+                        <span class="badge border font-weight-normal">150</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="size-2">
+                        <label class="custom-control-label" for="size-2">S</label>
+                        <span class="badge border font-weight-normal">295</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="size-3">
+                        <label class="custom-control-label" for="size-3">M</label>
+                        <span class="badge border font-weight-normal">246</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" class="custom-control-input" id="size-4">
+                        <label class="custom-control-label" for="size-4">L</label>
+                        <span class="badge border font-weight-normal">145</span>
+                    </div>
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
+                        <input type="checkbox" class="custom-control-input" id="size-5">
+                        <label class="custom-control-label" for="size-5">XL</label>
+                        <span class="badge border font-weight-normal">168</span>
+                    </div>
+                </form>
+            </div> --}}
+            <!-- Size End -->
+        </div>
+        <!-- Shop Sidebar End -->
+
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-md-8">
+            <div class="row pb-3">
+                <div class="col-12 pb-1">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <div>
+
+                           
+                        </div>
+                        <div class="ml-2 mt-3">
+                            <a class="btn btn-light btn-sm" href="/shopnow">All</a>
+                            <a class="btn btn-light btn-sm" href="/mensOnly">Mens</a>
+                            <a class="btn btn-light btn-sm" href="/womensOnly">Women</a>
+                            <a class="btn btn-light btn-sm" href="/kidsOnly">Kids</a>
+                        </div>
+                    </div>
+                </div>
+
+                {{#each products}}
+
+                <div class="main col-lg-4 col-md-6 col-sm-6 pb-1" id="target">
+                    <div class="product-item bg-light mb-4">
+                        <div class="product-img position-relative overflow-hidden">
+                            <img style="width: 10rem; height: 20rem;" class="productimage img-fluid w-100"
+                                src="/product-images/{{this._id}}.jpg" alt="">
+                            <div class="product-action mt-4 d-flex align-items-center justify-content-center">
+                                <a onclick="addToCart('{{this._id}}')" style="margin-left: 1rem;" href=""><i
+                                        style="margin-right: 10px;"
+                                        class="bi bi-cart-fill btn btn-outline-dark btn-square"></i></a>
+                                <span><a onclick="addToWish('{{this._id}}')" id="wishlist" href=""><i
+                                            class="bi bi-heart-fill btn btn-outline-dark btn-square"></i></a></span>
+                               
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <a class="h6 text-decoration-none text-truncate"
+                                href="/product-details/{{this._id}}">{{this.name}}</a>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <h5>Rs. {{this.price}}</h5>
+
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{/each}}
+
+                {{!-- <div class="col-12">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div> --}}
+            </div>
+        </div>
+        <!-- Shop Product End -->
+    </div>
+</div>
+<!-- Shop End -->
+
+
+<!-- Footer Start -->
+
+<footer class="footer">
+  <div style="background-color: transparent;" class="footer-left col-md-4 col-sm-6">
+    <p class="about">
+      <span> About the company</span> Ut congue augue non tellus bibendum, in varius tellus condimentum. In scelerisque nibh tortor, sed rhoncus odio condimentum in. Sed sed est ut sapien ultrices eleifend. Integer tellus est, vehicula eu lectus tincidunt,
+      ultricies feugiat leo. Suspendisse tellus elit, pharetra in hendrerit ut, aliquam quis augue. Nam ut nibh mollis, tristique ante sed, viverra massa.
+    </p>
+    <div class="icons">
+      <a href="#"><i class="bi bi-facebook"></i></a>
+      <a href="#"><i class="bi bi-twitter"></i></a>
+      <a href="#"><i class="bi bi-linkedin"></i></a>
+      <a href="#"><i class="bi bi-google"></i></a>
+      <a href="#"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+  <div class="footer-center col-md-4 col-sm-6">
+    <div>
+      <i class="bi bi-geo-alt-fill"></i>
+      <p><span> F4FASHION Tagore Nagar</span> Vazhuthacadu, Trivandrum</p>
+    </div>
+    <div>
+      <i class="bi bi-telephone-fill"></i>
+      <p> (+91) 7356 373 621</p>
+    </div>
+    <div>
+      <i class="bi bi-envelope-fill"></i>
+      <p><a href="#"> f4fashion@gmail.com</a></p>
+    </div>
+  </div>
+  <div class="footer-right col-md-4 col-sm-6">
+    <h2> Company<span> logo</span></h2>
+    <p class="menu">
+      <a href="#"> Home</a> |
+      <a href="#"> About</a> |
+      <a href="#"> Services</a> |
+      <a href="#"> Portfolio</a> |
+      <a href="#"> News</a> |
+      <a href="#"> Contact</a>
+    </p>
+    <p class="name"> Company Name &copy; 2016</p>
+  </div>
+</footer>
+
+
+
+<script>
+    $("#search").submit(e => {
+    if ($("#searchProduct").val()) {
+      $("#search").submit()
+    }
+    else {
+      e.preventDefault();
+    }
+  })
+
+  function mensOnly(){
+    console.log("wens only working");
+    $.ajax({
+        url:'/mensOnly',
+        method:'get',
+        success:(response)=>{
+            console.log("suii response here")
+        }
+    })
+  }
+</script>

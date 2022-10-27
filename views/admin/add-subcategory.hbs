@@ -1,0 +1,39 @@
+<style>
+  .error {
+        color: red;
+        margin-bottom: 0;
+    }
+
+    .valid {
+        color: green;
+    }
+</style>
+
+<section  class="d-flex justify-content-center " >
+  <div class=" container row  d-flex justify-content-center mt-5">
+    <div class="ml-5 col-md-6">
+      <center><img src="/img/suii logo.png" alt=""></center>
+      <h2 class="text-center my-5 ">Add SubCategory</h2>
+      <form class="d-flex aling-item-center flex-column" action="/admin/add-subcategory" method="post" id="subcategory-form">
+        
+        <input id="categoryInput" type="text" name="subcategory" class="form-control mb-3" placeholder="SubCategory Name" required>
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+    $("#subcategory-form").validate({
+      rules: {
+        subcategory: {
+          required: true,
+        },
+      }
+    });
+  })
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Original app</title>
+
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+   <link rel="stylesheet" href="css/style.css">
+
+   {{!-- jQuary CDn --}}
+   <script src="https://code.jquery.com/jquery-3.6.1.slim.js"
+      integrity="sha256-tXm+sa1uzsbFnbXt8GJqsgi2Tw+m4BLGDof6eUPjbtk=" crossorigin="anonymous"></script>
+
+    <!--datatables -->
+   <link rel="stylesheet" href="htttps://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+   <script type="text/javascript" charset="utf8"
+      src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> 
+
+      {{!-- bootstrap Icon CDN --}}
+
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+   <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+    
+
+</head>
+
+<body>
+   {{#if admin}}
+   {{>admin-header}}
+   {{else}}
+   {{>user-header}}
+   {{/if}}
+
+
+
+
+
+
+
+   {{{body}}}
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"></script>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+   <script type="text/javascript" charset="utf8"
+      src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+   <script src="/js/script.js"></script>
+
+ {{!-- edit-form --}}
+   <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.js"></script>
+{{!-- edit-form --}}
+   
+
+</body>
+
+</html>

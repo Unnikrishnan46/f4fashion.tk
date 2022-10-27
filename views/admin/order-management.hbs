@@ -1,0 +1,178 @@
+{{!--
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://demo.dashboardpack.com/architectui-html-free/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-card mb-3 card">
+                    <div class="card-header">Active Users
+                        <div class="btn-actions-pane-right">
+                            <div role="group" class="btn-group-sm btn-group">
+                                <button class="active btn btn-focus">Last Week</button>
+                                <button class="btn btn-focus">All Month</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="align-middle mb-0 table table-borderless table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Name</th>
+                                    <th class="text-center">City</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each allOrders}}
+                                <tr>
+                                    <td class="text-center text-danger"></td>
+                                    <td>
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left mr-3">
+                                                    <div class="widget-content-left">
+                                                        <img width="40" class="rounded-circle"
+                                                            src="assets/images/avatars/4.jpg" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="widget-content-left flex2">
+                                                    <div class="widget-heading">{{this.deliveryDetails.name}}</div>
+                                                    <div class="widget-subheading opacity-7">
+                                                        {{this.deliveryDetails.mobile}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">{{this.deliveryDetails.city}}</td>
+                                    <td class="text-center">
+                                        <div class="badge badge-warning">{{this.status}}</div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                Change Status
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item"
+                                                        href="/admin/orderPacking/{{this._id}}">Order Packing</a></li>
+                                                <li><a class="dropdown-item"
+                                                        href="/admin/orderShipped/{{this._id}}">Order Shipped</a></li>
+                                                <li><a class="dropdown-item"
+                                                        href="/admin/orderDelivered/{{this._id}}">Order Delivered</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html> --}}
+
+<style>
+    /* Webpixels CSS */
+    /* Utility and component-centric Design System based on Bootstrap for fast, responsive UI development */
+    /* URL: https://github.com/webpixels/css */
+
+    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+    /* Bootstrap Icons */
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+</style>
+
+
+
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Applications</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each allOrders}}
+                <tr>
+                    <td>
+                        <img alt="..."
+                            src="/profile-images/{{this.userId}}.jpg"
+                            class="avatar avatar-sm rounded-circle me-2">
+                        <a class="text-heading font-semibold" href="#">
+                            {{this.deliveryDetails.name}}
+                        </a>
+                    </td>
+                    <td>
+                        {{this.date}}
+                    </td>
+                    <td>
+                        <a class="text-heading font-semibold" href="#">
+                            {{this.deliveryDetails.mobile}}
+                        </a>
+                    </td>
+                    <td>
+                        {{this.totalamount}}
+                    </td>
+                    <td>
+                        <span class="badge badge-lg badge-dot">
+                            <i class="bg-success"></i>{{this.status}}
+                        </span>
+                    </td>
+                    <td class="text-end">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Change Status
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/admin/orderPacking/{{this._id}}">Order Packing</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/admin/orderShipped/{{this._id}}">Order Shipped</a>
+                                </li>
+                                <li><a class="dropdown-item" href="/admin/orderDelivered/{{this._id}}">Order
+                                        Delivered</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+</main>
+</div>
+</div>
