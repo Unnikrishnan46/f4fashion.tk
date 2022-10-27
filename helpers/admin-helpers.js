@@ -155,8 +155,9 @@ module.exports = {
 
     //Total Sales Amount
     getTotalSalesAmount: () => {
-        return new Promise((resolve, reject) => {
-            let totalAmount = db.get().collection(collection.ORDER_COLLECTION).aggregate([{ $group: { _id: null, totalSum: { $sum: "$totalamount" } } }]).toArray()
+        return new Promise(async(resolve, reject) => {
+            let totalAmount = await db.get().collection(collection.ORDER_COLLECTION).aggregate([{ $group: { _id: null, totalSum: { $sum: "$totalamount" } } }]).toArray()
+            console.log('ccccc',totalAmount);
             resolve(totalAmount)
         })
     },
