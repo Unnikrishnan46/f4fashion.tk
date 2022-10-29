@@ -301,7 +301,7 @@ module.exports = {
             console.log(order, products, total)
             let date = new Date()
             //let status=order.paymentmethod==='cod'?'placed':'pending'
-            let status = order.paymentMethod === 'cod' ? 'placed' : 'pending'
+            let status = order.paymentMethod === 'cod' ? 'pending' : 'placed'
 
             let orderObj = {
                 deliveryDetails: {
@@ -429,11 +429,10 @@ module.exports = {
         return new Promise((resolve, reject) => {
             const crypto = require('crypto')
             let hmac = crypto.createHmac('sha256', 'FzmPqfwFMBihPYceyGhefE3s')
-            hmac.update(details['payment[razorpay_order_id]'] + '|' + details['payment[rarorpay_payment_id]'])
+            hmac.update(details['payment[razorpay_order_id]'] + '|' + details['payment[razorpay_payment_id]'])
             hmac = hmac.digest('hex')
-            console.log("vishnu")
-            console.log(hmac)
-            console.log(details.payment.razorpay_signature)
+            console.log(hmac);
+            console.log(details['payment[rarorpay_payment_id]'])
             if (hmac == details['payment[razorpay_signature]']) {
                 console.log("matched")
                 resolve()
@@ -503,18 +502,18 @@ module.exports = {
                     product.item == proId
                 )
                 if (proExist != -1) {
-                    reject()
+                    console.log("suii -1")
                 } else {
-                    db.get().collection(collection.WISHLIST_COLLECTION).updateOne({ user: objectId }, { $push: { products: proObj } }, { upsert: true }).then((response) => {
+                    db.get().collection(collection.WISHLIST_COLLECTION).updateOne({ user: objectId }, { $push: { products: proObj } }).then((response) => {
                         resolve(response)
                     })
                 }
             } else {
                 let wishlistObj = {
                     user: objectId(userId),
-                    products: [proObj]
+                    products: [proObj],
                 }
-                db.get().collection(collection.WISHLIST_COLLECTION).insertOne(wishlistObj, { upsert: true }).then((response) => {
+                db.get().collection(collection.WISHLIST_COLLECTION).insertOne(wishlistObj).then((response) => {
                     resolve(response)
                 })
             }
@@ -634,7 +633,7 @@ module.exports = {
 
     getMensOnly: () => {
         return new Promise(async (resolve, reject) => {
-            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find({ category: "mens" }).toArray();
+            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find({ category: "Mens" }).toArray();
             resolve(products)
 
         })
@@ -775,11 +774,13 @@ module.exports = {
         })
     },
     filterPrice:(miniValue,maxValue)=>{
+        console.log("suii values")
+        console.log(miniValue,maxValue);
         return new Promise(async(resolve,reject)=>{
-         let filter = await db.get().collection(collection.PRODUCT_COLLECTION).find({price:{$gt:miniValue,$lt:maxValue}}).toArray()
-         resolve(filter)
+         let GTminiValue = await db.get().collection(collection.PRODUCT_COLLECTION).find({},{price:{$gt:'1500',$lt:'20000'}}).toArray()
+         resolve(GTminiValue)
          console.log("fiiiiiet")
-         console.log(filter);
+         console.log(GTminiValue);
         })
     }
 }

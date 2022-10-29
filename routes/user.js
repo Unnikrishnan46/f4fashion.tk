@@ -46,6 +46,8 @@ router.get('/', async function (req, res, next) {
     })
   } else {
     productHelpers.getAllProducts().then((products) => {
+      console.log("products suii")
+      console.log(products)
       res.render('user/view-products', { products })
     })
   }
@@ -88,7 +90,7 @@ router.post('/login', async (req, res) => {
       if (response.status) {
         console.log("this user is not blocked")
         req.session.user = response.user
-        req.session.loggedin = true
+        req.session.loggedin = false
         req.session.phonenumber = response.user.phonenumber
         res.redirect('/otp');
       } else {
@@ -102,10 +104,12 @@ router.post('/login', async (req, res) => {
 //otp
 
 router.get('/otp', (req, res) => {
-  if (req.session.user.loggedin) {
+  if (req.session.loggedin) {
     res.redirect('/');
   } else {
+    let user=req.session.user;
     console.log('hai')
+    console.log(user.phonenumber)
     console.log(req.session.user)
     userHelpers.sendOtp(req.session.user)
     res.render("user/otplogin", { otpErr: req.session.otpErr })
@@ -131,17 +135,14 @@ router.post('/verifyotp', (req, res) => {
       res.redirect('/')
     } else {
       console.log("OTP login failed")
-      req.session.loggedin = false
-      req.session.user = null
-      req.session.loggedin = false
       req.session.otpErr = true
-      res.render('user/otplogin', { "otpErr": req.session.otpErr })
+      res.redirect('/otp');
     }
   })
 })
 
 router.get('/resendOtp', (req, res) => {
-  res.redirect('/login');
+  res.redirect('/otp');
 })
 
 router.get('/home', (req, res) => {
@@ -201,7 +202,7 @@ router.get('/cart', verifyLogin, async (req, res, next) => {
   res.render('user/cart', { products, user: req.session.user._id, totalValue: req.session.totalValue, cartCount: req.session.cartCount, user, 'cartempty': cartEmpty, wishCount });
 });
 
-router.get("/add-to-cart/:id", (req, res) => {
+router.get("/add-to-cart/:id", verifyLogin, (req, res) => {
   console.log("api call");
   userHelpers.addToCart(req.params.id, req.session.user._id).then(() => {
     //res.redirect('/')
@@ -273,7 +274,7 @@ router.post('/place-order', async (req, res) => {
         res.json({ order, razorSuccess: true })
         console.log(order)
       })
-    } else {
+    } else if(req.body["paymentmethod"] ==='paypal'){
       console.log("paypal")
       console.log('wakkanda for ever')
       res.json({ totalPrice: totalPrice, orderId: orderId });
@@ -285,7 +286,6 @@ router.post('/place-order', async (req, res) => {
 
 router.post('/verify-payment', (req, res) => {
   console.log('hawa hawa')
-  console.log(req.body.order.receipt)
   console.log(req.body)
   userHelpers.verifyPayment(req.body).then(() => {
     currentStatus = 'placed'
@@ -374,7 +374,6 @@ router.post("/paypal-payment", (req, res) => {
         if (payment.links[i].rel === 'approval_url') {
           console.log(payment.links[i].href)
           res.json({ forwardLink: payment.links[i].href })
-          // res.redirect(payment.links[i].href);
         }
       }
     }

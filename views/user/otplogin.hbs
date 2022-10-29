@@ -76,17 +76,20 @@ input[type=number]::-webkit-outer-spin-button {
         <div class="card p-2 text-center">
           <form action="/verifyotp" method="post" id="submit-form">
             <h6>Please enter the one time password <br> to verify your account</h6>
-            <div> <span>A code has been sent to</span> <small>*******9897</small> </div>
+            <div> <span>A code has been sent to</span> <small>***</small> </div>
             <div id="otp" class="inputs d-flex flex-row justify-content-center mt-2"> 
-            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" />
-            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" />
-            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" />
-            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" />
-            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1" />
-            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1" /> 
+            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="first" maxlength="1" required/>
+            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="second" maxlength="1" required/>
+            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="third" maxlength="1" required/>
+            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="fourth" maxlength="1" required/>
+            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="fifth" maxlength="1" required/>
+            <input name="otpval" class="m-2 text-center form-control rounded" type="text" id="sixth" maxlength="1" required/> 
             </div>
             <div class="mt-4"> <button type="submit" class="btn btn-danger px-4 validate">SUBMIT</button> </div>
             </form>
+            {{#if otpErr}}
+            <p class="text-danger">OTP Verification Failed</p>
+            {{/if}}
             <span class="mt-2">Didn't get an OTP</span> <span><a href="/resendOtp">Resend OTP</a></span>
         </div>
     </div>

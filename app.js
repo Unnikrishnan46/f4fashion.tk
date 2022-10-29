@@ -9,13 +9,6 @@ var db=require('./config/connection')
 var app = express();
 
 
-var bodyParser = require('body-parser')
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-
-
-
 var userRouter = require('./routes/user');
 var adminRouter = require('./routes/admin');
 
@@ -47,7 +40,7 @@ db.connect((err)=>{
 })
 
 app.use(session({secret:'key',resave: true,
-saveUninitialized: true,cookie:{maxAge:600000}}))
+saveUninitialized: true,cookie:{maxAge:6000000}}))
 
 app.use('/', userRouter);
 app.use('/admin', adminRouter);

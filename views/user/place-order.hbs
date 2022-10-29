@@ -409,7 +409,7 @@
           {{!-- coupen --}}
 
           <div>
-            <input type="radio" name="paymentmethod" value="cod"> Cash on Delivery
+            <input type="radio" name="paymentmethod" value="cod" checked> Cash on Delivery
           </div>
           <div>
             <input type="radio" name="paymentmethod" value="razorpay"> Razorpay <span>
@@ -463,7 +463,7 @@
     </div>
   </div>
   <div class="footer-right col-md-4 col-sm-6">
-    <h2> Company<span> logo</span></h2>
+    <h2> F4FASHION<span></span></h2>
     <p class="menu">
       <a href="#"> Home</a> |
       <a href="#"> About</a> |
@@ -472,7 +472,7 @@
       <a href="#"> News</a> |
       <a href="#"> Contact</a>
     </p>
-    <p class="name"> Company Name &copy; 2016</p>
+    <p class="name"> F4FASHION &copy; 2016</p>
   </div>
 </footer>
 
@@ -507,6 +507,7 @@
   function razorpayPayment(order) {
     console.log('jkbkdh')
     console.log(order.id)
+    console.log(order.amount)
     var options = {
       "key": "rzp_test_vOWB4Hpqe9fSat", // Enter the Key ID generated from the Dashboard
       "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -516,7 +517,8 @@
       "image": "",
       "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       "handler": function (response) {
-
+        console.log("y")
+        console.log(response,order)
         verifyPayment(response, order)
       },
       "prefill": {
@@ -566,6 +568,7 @@
       },
       method: 'post',
       success: (response) => {
+        console.log("paypal response")
         console.log(response)
         location.href=response.forwardLink
         if(response.status){

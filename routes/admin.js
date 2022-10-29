@@ -20,6 +20,9 @@ const adminVerify = (req, res, next) => {
 
 /* GET users listing. */
 router.get('/', adminVerify, async function (req, res,) {
+  if(req.session.userId){
+    console.log("Admin here")
+  }
   let jan = await adminHelpers.getOrderMonthJan()
   let feb = await adminHelpers.getOrderMonthFeb()
   let march = await adminHelpers.getOrderMonthMarch()
@@ -33,13 +36,13 @@ router.get('/', adminVerify, async function (req, res,) {
   let nov = await adminHelpers.getOrderMonthNov()
   let des = await adminHelpers.getOrderMonthDes()
   let totalOrders = await adminHelpers.getTotalOrders()
-  // let totalAmount = await adminHelpers.getTotalSalesAmount()
-  // let totalAmountSum = totalAmount[0].totalSum
+   let totalAmount = await adminHelpers.getTotalSalesAmount()
+   let totalAmountSum = totalAmount[0].totalSum
   let totalProducts = await adminHelpers.getTotalProductsCount()
   let ProductReport = await adminHelpers.getProductReport();
   console.log("month here")
   console.log(totalProducts);
-  res.render('admin/dashboard', { admin: true, totalOrders, totalProducts, jan, feb, march, april, may, june, july, aug, sept, oct, nov, des, ProductReport });
+  res.render('admin/dashboard', { admin: true, totalOrders, totalAmountSum, totalProducts, jan, feb, march, april, may, june, july, aug, sept, oct, nov, des, ProductReport });
 });
 
 
@@ -66,17 +69,14 @@ router.get('/dashboard', adminVerify, async (req, res) => {
   let nov = await adminHelpers.getOrderMonthNov()
   let des = await adminHelpers.getOrderMonthDes()
   let totalOrders = await adminHelpers.getTotalOrders()
-  // let totalAmount = await adminHelpers.getTotalSalesAmount()
-  // let totalAmountSum = totalAmount[0].totalSum
+  let totalAmount = await adminHelpers.getTotalSalesAmount()
+  let totalAmountSum = totalAmount[0].totalSum
   let totalProducts = await adminHelpers.getTotalProductsCount()
   let ProductReport = await adminHelpers.getProductReport();
   console.log("month here")
-  console.log(totalProducts);
-  res.render("admin/dashboard", { admin: true, totalOrders, totalProducts, jan, feb, march, april, may, june, july, aug, sept, oct, nov, des });
+  console.log(ProductReport);
+  res.render("admin/dashboard", { admin: true, totalOrders, totalProducts, jan, feb, march, april, may, june, july, aug, sept, oct, nov, des ,totalAmountSum,ProductReport});
 })
-
-
-
 
 
 
@@ -86,7 +86,7 @@ router.get('/login', (req, res) => {
     res.redirect('/admin')
   } else {
     // res.render('admin/admin-login')
-    res.render('admin/admin-login', { "loginErr": req.session.loginErr })
+    res.render('admin/admin-login', { "loginErr": req.session.loginErr  ,admin: true})
     req.session.loginErr = false
 
   }
@@ -109,19 +109,6 @@ router.post('/login', (req, res) => {
 
   })
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -323,7 +310,7 @@ router.get('/sales-report', async (req, res) => {
 
 
 router.get('/banners', (req, res) => {
-  res.render("admin/add-banner")
+  res.render("admin/add-banner",{admin: true})
 })
 
 router.post('/add-banner', (req, res) => {

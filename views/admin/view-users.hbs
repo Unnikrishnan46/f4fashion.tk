@@ -59,7 +59,7 @@
     td span {
       display: block;
       width: 100%;
-      
+
       background: #ffffff;
       color: #000000;
     }
@@ -83,8 +83,11 @@
     <tbody>
       {{#each allUserDetails}}
       <tr>
-        <td data-label="No"><span >1</span></td>
-        <td data-label="User Name" ><span>{{this.username}}</span></td>
+        <td data-label="No"><span>1</span></td>
+        <td data-label="User Name">
+        <img style="height: 30px; width: ;30px" alt="" src="/profile-images/{{this._id}}.jpg"
+            class="avatar avatar-sm rounded-circle me-2"><span>{{this.username}}</span>
+        </td>
         <td data-label="Email Id"><span>{{this.email}}</span></td>
         <td data-label="Mobile"><span>{{this.phonenumber}}</span></td>
         <td data-label="Status"><span>
